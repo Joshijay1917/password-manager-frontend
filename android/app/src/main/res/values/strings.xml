@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">password-app</string>
-    <string name="title_activity_main">password-app</string>
-    <string name="package_name">com.jay.app</string>
-    <string name="custom_url_scheme">com.jay.app</string>
-</resources>
