@@ -1,0 +1,41 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - uses: actions/checkout@v4
+
+      # 2. Set up Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      # 3. Install dependencies & build React app
+      - run: npm install
+      - run: npm run build
+
+      # 4. Set up Capacitor
+      - run: npx cap sync android
+
+      # 5. Set up JDK (GitHub-hosted, no local install needed)
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'  # Pre-installed JDK
+          java-version: '17'
+
+      # 6. Build Debug APK
+      - run: cd android && ./gradlew assembleDebug
+
+      # 7. Upload APK as an artifact
+      - uses: actions/upload-artifact@v3
+        with:
+          name: app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
