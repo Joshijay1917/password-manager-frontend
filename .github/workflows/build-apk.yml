@@ -28,7 +28,7 @@ jobs:
       # 5. Set up JDK (GitHub-hosted, no local install needed)
       - uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'  # Pre-installed JDK
+          distribution: 'zulu'
           java-version: '17'
 
       # 6. Build Debug APK
