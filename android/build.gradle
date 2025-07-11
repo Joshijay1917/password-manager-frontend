@@ -22,9 +22,6 @@ allprojects {
         google()
         mavenCentral()
     }
-    tasks.withType(JavaCompile) {
-        options.release = 17 // Force Java 17 compatibility
-    }
 }
 
 task clean(type: Delete) {
