@@ -33,9 +33,9 @@ jobs:
 
       # 6. Build Debug APK
       - run: |
-      cd android
-      chmod +x gradlew  # Add execute permissions
-      ./gradlew assembleDebug
+            cd android
+            chmod +x gradlew  # Add execute permissions
+            ./gradlew assembleDebug
 
       # 7. Upload APK as an artifact
       - uses: actions/upload-artifact@v4
